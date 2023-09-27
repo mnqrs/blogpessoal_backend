@@ -53,6 +53,11 @@ namespace Blog_Pessoal.Controllers
             if (!validarPostagem.IsValid) //exclamação no começo da operação = sinal de negação
                 return StatusCode(StatusCodes.Status400BadRequest, validarPostagem);
 
+            var Resposta = await _postagemService.Create(postagem);
+
+            if (Resposta is null)
+                return BadRequest("Postagem e/ou Tema não encontrado!");
+
             await _postagemService.Create(postagem);
 
             return CreatedAtAction(nameof(GetById), new {id = postagem.Id}, postagem);
