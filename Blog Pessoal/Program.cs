@@ -40,10 +40,13 @@ namespace Blog_Pessoal
 
             builder.Services.AddTransient<IValidator<Tema>, TemaValidator>();
 
+            builder.Services.AddTransient<IValidator<User>, UserValidator>();
+
             //Registrar as Classes de Servido (Service)
 
             builder.Services.AddScoped<IPostagemService, PostagemService>();
             builder.Services.AddScoped<ITemaService, TemaService>();
+            builder.Services.AddScoped<IUserService, UserService>();
 
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
